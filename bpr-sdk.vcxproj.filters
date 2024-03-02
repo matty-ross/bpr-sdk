@@ -23,5 +23,8 @@
     <ClInclude Include="include\bpr-sdk\CgsID.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\bpr-sdk\GameEvents.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
