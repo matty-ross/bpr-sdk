@@ -29,7 +29,7 @@ namespace BPR
     
     struct SetupPlayerVehicleEvent
     {
-        static constexpr int32_t k_GameEvent_ID = 0;
+        static constexpr int32_t k_GameEventID = 0;
 
         alignas(0x10) float Position[3];
         alignas(0x10) float Direction[3];
@@ -39,7 +39,7 @@ namespace BPR
 
     struct TeleportPlayerVehicleEvent
     {
-        static constexpr int32_t k_GameEvent_ID = 1;
+        static constexpr int32_t k_GameEventID = 1;
 
         alignas(0x10) float Position[3];
         alignas(0x10) float Direction[3];
@@ -47,7 +47,7 @@ namespace BPR
 
     struct ChangePlayerVehicleEvent
     {
-        static constexpr int32_t k_GameEvent_ID = 2;
+        static constexpr int32_t k_GameEventID = 2;
 
         uint64_t VehicleID;
         uint64_t WheelID;
