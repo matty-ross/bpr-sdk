@@ -27,7 +27,7 @@ namespace BPR
     }
 
     
-    struct SetupPlayerVehicleEvent
+    struct GameEvent_SetupPlayerVehicle
     {
         static constexpr int32_t k_GameEventID = 0;
 
@@ -37,7 +37,7 @@ namespace BPR
         uint64_t WheelID;
     };
 
-    struct TeleportPlayerVehicleEvent
+    struct GameEvent_TeleportPlayerVehicle
     {
         static constexpr int32_t k_GameEventID = 1;
 
@@ -45,7 +45,7 @@ namespace BPR
         alignas(0x10) float Direction[3];
     };
 
-    struct ChangePlayerVehicleEvent
+    struct GameEvent_ChangePlayerVehicle
     {
         static constexpr int32_t k_GameEventID = 2;
 

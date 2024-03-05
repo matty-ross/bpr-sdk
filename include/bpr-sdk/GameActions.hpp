@@ -27,7 +27,7 @@ namespace BPR
 	}
 
 
-    struct ResetPlayerVehicleOnTrackAction
+    struct GameAction_ResetPlayerVehicleOnTrack
     {
         static constexpr int32_t k_GameActionID = 3;
         
