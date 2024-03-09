@@ -29,8 +29,16 @@ namespace BPR
 
     struct GameAction_ResetPlayerVehicleOnTrack
     {
-        static constexpr int32_t k_GameActionID = 3;
-        
         float Speed;
+
+        static constexpr int32_t GetID()
+        {
+            return 3;
+        }
+
+        static constexpr uint32_t GetSize()
+        {
+            return 0x4;
+        }
     };
 }

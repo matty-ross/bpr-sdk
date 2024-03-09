@@ -29,29 +29,53 @@ namespace BPR
     
     struct GameEvent_SetupPlayerVehicle
     {
-        static constexpr int32_t k_GameEventID = 0;
-
         alignas(0x10) float Position[3];
         alignas(0x10) float Direction[3];
         uint64_t VehicleID;
         uint64_t WheelID;
+
+        static constexpr int32_t GetID()
+        {
+            return 0;
+        }
+
+        static constexpr uint32_t GetSize()
+        {
+            return 0x30;
+        }
     };
 
     struct GameEvent_TeleportPlayerVehicle
     {
-        static constexpr int32_t k_GameEventID = 1;
-
         alignas(0x10) float Position[3];
         alignas(0x10) float Direction[3];
+
+        static constexpr int32_t GetID()
+        {
+            return 1;
+        }
+
+        static constexpr uint32_t GetSize()
+        {
+            return 0x20;
+        }
     };
 
     struct GameEvent_ChangePlayerVehicle
     {
-        static constexpr int32_t k_GameEventID = 2;
-
         uint64_t VehicleID;
         uint64_t WheelID;
         bool ResetPlayerCamera;
         bool KeepResetSection;
+
+        static constexpr int32_t GetID()
+        {
+            return 2;
+        }
+
+        static constexpr uint32_t GetSize()
+        {
+            return 0x18;
+        }
     };
 }
