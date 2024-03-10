@@ -29,5 +29,8 @@
     <ClInclude Include="include\bpr-sdk\GameActions.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\bpr-sdk\DataLists.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
