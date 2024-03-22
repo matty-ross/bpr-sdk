@@ -6,9 +6,9 @@
 
 namespace BPR
 {
-	bool GameActionQueue_AddGameAction(void* gameActionQueue, const void* gameAction, int32_t gameActionID, uint32_t gameActionSize)
-	{
-		bool result = false;
+    bool GameActionQueue_AddGameAction(void* gameActionQueue, const void* gameAction, int32_t gameActionID, uint32_t gameActionSize)
+    {
+        bool result = false;
         
         __asm
         {
@@ -24,7 +24,7 @@ namespace BPR
         }
 
         return result;
-	}
+    }
 
 
     struct GameAction_ResetPlayerVehicleOnTrack
