@@ -147,9 +147,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\Main.cpp" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="include\bpr-sdk\CgsID.hpp" />
     <ClInclude Include="include\bpr-sdk\DataLists.hpp" />
     <ClInclude Include="include\bpr-sdk\GameActions.hpp" />
