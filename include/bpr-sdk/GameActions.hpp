@@ -42,6 +42,31 @@ namespace BPR
         }
     };
 
+    struct GameAction_SetPlayerVehicleDriver
+    {
+        enum PlayerVehicleDriver
+        {
+            None = 0,
+            Player = 1,
+            AI = 2,
+        };
+
+        PlayerVehicleDriver Driver;
+        float DriveThruBoxRegion[9];
+        float MaxResetSpeed;
+        bool IsDriveThru;
+
+        static constexpr int32_t GetID()
+        {
+            return 7;
+        }
+
+        static constexpr uint32_t GetSize()
+        {
+            return 0x30;
+        }
+    };
+
     struct GameAction_SetBoost
     {
         int32_t ActiveRaceVehicleIndex;
