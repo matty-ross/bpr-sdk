@@ -44,7 +44,7 @@ namespace BPR
 
     struct GameAction_SetPlayerVehicleDriver
     {
-        enum PlayerVehicleDriver
+        enum class PlayerVehicleDriver
         {
             None = 0,
             Player = 1,
@@ -93,6 +93,35 @@ namespace BPR
         static constexpr uint32_t GetSize()
         {
             return 0x14;
+        }
+    };
+
+    struct GameAction_UpdateVehicleStats
+    {
+        enum class BoostType
+        {
+            Speed = 0,
+            Aggression = 1,
+            Stunt = 2,
+            None = 3,
+            Locked = 4,
+        };
+        
+        int32_t Speed;
+        int32_t Strength;
+        int32_t BoostLossLevel;
+        int32_t BoostLevel;
+        float DamageLimit;
+        BoostType BoostType;
+
+        static constexpr int32_t GetID()
+        {
+            return 230;
+        }
+
+        static constexpr uint32_t GetSize()
+        {
+            return 0x18;
         }
     };
 }
