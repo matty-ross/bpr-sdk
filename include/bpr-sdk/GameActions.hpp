@@ -27,6 +27,55 @@ namespace BPR
     }
 
 
+    struct GameAction_ResetPlayerVehicle
+    {
+        enum class DeformationType
+        {
+            None = -1,
+            Event = 0,
+            VehicleSelect = 1,
+        };
+
+        enum class VehicleSelectType
+        {
+            DontDrop = 0,
+            DropNormal = 1,
+            DropShutdown = 2,
+        };
+
+        enum class VehicleType
+        {
+            Invalid = -1,
+            Car = 0,
+            Motorbike = 1,
+            Plane = 2,
+        };
+
+        alignas(16) float Position[3];
+        alignas(16) float Direction[3];
+        uint64_t VehicleID;
+        uint64_t WheelID;
+        int32_t PlayerScoringIndex;
+        float DeformationAmount;
+        DeformationType DeformationType;
+        VehicleSelectType VehicleSelectType;
+        VehicleType VehicleType;
+        bool InVehicleSelect;
+        bool VehicleSelectDontStreamAudio;
+        bool ResetPlayerCamera;
+        bool KeepResetSection;
+
+        static constexpr int32_t GetID()
+        {
+            return 0;
+        }
+
+        static constexpr uint32_t GetSize()
+        {
+            return 0x50;
+        }
+    };
+
     struct GameAction_ResetPlayerVehicleOnTrack
     {
         float Speed;
@@ -51,8 +100,13 @@ namespace BPR
             AI = 2,
         };
 
-        PlayerVehicleDriver Driver;
-        float DriveThruBoxRegion[9];
+        PlayerVehicleDriver PlayerVehicleDriver;
+        struct
+        {
+            float Position[3];
+            float Rotation[3];
+            float Dimension[3];
+        } DriveThruBoxRegion;
         float MaxResetSpeed;
         bool IsDriveThru;
 
