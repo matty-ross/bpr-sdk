@@ -51,6 +51,11 @@ namespace BPR
             Plane = 2,
         };
 
+        static constexpr int32_t GetID()
+        {
+            return 0;
+        }
+
         alignas(16) float Position[3];
         alignas(16) float Direction[3];
         uint64_t VehicleID;
@@ -64,31 +69,16 @@ namespace BPR
         bool VehicleSelectDontStreamAudio;
         bool ResetPlayerCamera;
         bool KeepResetSection;
-
-        static constexpr int32_t GetID()
-        {
-            return 0;
-        }
-
-        static constexpr uint32_t GetSize()
-        {
-            return 0x50;
-        }
     };
 
     struct GameAction_ResetPlayerVehicleOnTrack
     {
-        float Speed;
-
         static constexpr int32_t GetID()
         {
             return 3;
         }
-
-        static constexpr uint32_t GetSize()
-        {
-            return 0x4;
-        }
+        
+        float Speed;
     };
 
     struct GameAction_SetPlayerVehicleDriver
@@ -100,6 +90,11 @@ namespace BPR
             AI = 2,
         };
 
+        static constexpr int32_t GetID()
+        {
+            return 7;
+        }
+
         PlayerVehicleDriver PlayerVehicleDriver;
         struct
         {
@@ -109,20 +104,15 @@ namespace BPR
         } DriveThruBoxRegion;
         float MaxResetSpeed;
         bool IsDriveThru;
-
-        static constexpr int32_t GetID()
-        {
-            return 7;
-        }
-
-        static constexpr uint32_t GetSize()
-        {
-            return 0x30;
-        }
     };
 
     struct GameAction_SetBoost
     {
+        static constexpr int32_t GetID()
+        {
+            return 197;
+        }
+        
         int32_t ActiveRaceVehicleIndex;
         struct
         {
@@ -138,16 +128,6 @@ namespace BPR
         bool InfiniteBoost;
         bool BoostEarningEnabled;
         bool BoostMessagesEnabled;
-
-        static constexpr int32_t GetID()
-        {
-            return 197;
-        }
-
-        static constexpr uint32_t GetSize()
-        {
-            return 0x14;
-        }
     };
 
     struct GameAction_UpdateVehicleStats
@@ -160,6 +140,11 @@ namespace BPR
             None = 3,
             Locked = 4,
         };
+
+        static constexpr int32_t GetID()
+        {
+            return 230;
+        }
         
         int32_t Speed;
         int32_t Strength;
@@ -167,15 +152,5 @@ namespace BPR
         int32_t BoostLevel;
         float DamageLimit;
         BoostType BoostType;
-
-        static constexpr int32_t GetID()
-        {
-            return 230;
-        }
-
-        static constexpr uint32_t GetSize()
-        {
-            return 0x18;
-        }
     };
 }
