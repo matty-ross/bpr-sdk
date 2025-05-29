@@ -106,6 +106,22 @@ namespace BPR
         bool IsDriveThru;
     };
 
+    struct GameAction_PauseSimulation
+    {
+        static constexpr int32_t GetID()
+        {
+            return 100;
+        }
+    };
+
+    struct GameAction_UnpauseSimulation
+    {
+        static constexpr int32_t GetID()
+        {
+            return 101;
+        }
+    };
+
     struct GameAction_SetBoost
     {
         static constexpr int32_t GetID()
