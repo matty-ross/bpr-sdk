@@ -63,4 +63,17 @@ namespace BPR
         bool ResetPlayerCamera;
         bool KeepResetSection;
     };
+
+    struct GameEvent_ChangeNetworkVehicle
+    {
+        static constexpr int32_t GetID()
+        {
+            return 7;
+        }
+
+        uint64_t PlayerID;
+        uint64_t VehicleID;
+        uint64_t WheelID;
+        float DeformationAmount;
+    };
 }

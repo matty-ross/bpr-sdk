@@ -81,6 +81,22 @@ namespace BPR
         float Speed;
     };
 
+    struct GameAction_SetupNetworkVehicle
+    {
+        static constexpr int32_t GetID()
+        {
+            return 5;
+        }
+        
+        alignas(16) float Position[3];
+        alignas(16) float At[3];
+        uint64_t VehicleID;
+        uint64_t WheelID;
+        int32_t ActiveRaceVehicleIndex;
+        int32_t PlayerScoringIndex;
+        float DeformationAmount;
+    };
+
     struct GameAction_SetPlayerVehicleDriver
     {
         enum class PlayerVehicleDriver
