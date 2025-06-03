@@ -6,13 +6,19 @@
 
 namespace BPR
 {
-    uint64_t ResourceID_GetHash(const char* string)
+    struct Resource
+    {
+        void* Memory[3];
+    };
+    
+    
+    uint64_t ResourceID_GetHash(const char* resourceName)
     {
         uint64_t id = 0;
         
         __asm
         {
-            mov ecx, dword ptr [string]
+            mov ecx, dword ptr [resourceName]
 
             mov eax, 0x008FD5B0
             call eax
@@ -33,8 +39,10 @@ namespace BPR
             push dword ptr [id + 0x4]
             push dword ptr [id + 0x0]
             push dword ptr [index]
-            push byte ptr [status]
-            push byte ptr [allowNoRef]
+            movzx eax, byte ptr [status]
+            push eax
+            movzx eax, byte ptr [allowNoRef]
+            push eax
             mov ecx, dword ptr [resourcePool]
             
             mov eax, 0x008F12A0
@@ -44,5 +52,23 @@ namespace BPR
         }
 
         return resource;
+    }
+
+    Resource* PoolModule_FindResource(const char* resourceName)
+    {
+        uint64_t id = ResourceID_GetHash(resourceName);
+
+        uintptr_t gameModule = *reinterpret_cast<uintptr_t*>(0x013FC8E0);
+        for (int i = 0; i < 128; ++i) // TODO: invalid pools crash, check the mbIsValid flag
+        {
+            void* resourcePool = reinterpret_cast<void*>(gameModule + 0x64E628 + i * 0x1D8);
+            void* resourceEntry = ResourcePool_FindResource(resourcePool, false, 2, nullptr, id);
+            if (resourceEntry != nullptr)
+            {
+                return reinterpret_cast<Resource*>(reinterpret_cast<uintptr_t>(resourceEntry) + 0x28);
+            }
+        }
+
+        return nullptr;
     }
 }
