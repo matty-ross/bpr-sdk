@@ -56,16 +56,20 @@ namespace BPR
 
     Resource* PoolModule_FindResource(const char* resourceName)
     {
-        uint64_t id = ResourceID_GetHash(resourceName);
+        uint64_t resourceId = ResourceID_GetHash(resourceName);
 
-        uintptr_t gameModule = *reinterpret_cast<uintptr_t*>(0x013FC8E0);
-        for (int i = 0; i < 128; ++i) // TODO: invalid pools crash, check the mbIsValid flag
+        for (int i = 0; i < 128; ++i)
         {
-            void* resourcePool = reinterpret_cast<void*>(gameModule + 0x64E628 + i * 0x1D8);
-            void* resourceEntry = ResourcePool_FindResource(resourcePool, false, 2, nullptr, id);
-            if (resourceEntry != nullptr)
+            uintptr_t resourcePool = *reinterpret_cast<uintptr_t*>(0x013FC8E0) + 0x64E628 + i * 0x1D8;
+            
+            int32_t poolId = *reinterpret_cast<int32_t*>(resourcePool + 0x118);
+            if (poolId != -1)
             {
-                return reinterpret_cast<Resource*>(reinterpret_cast<uintptr_t>(resourceEntry) + 0x28);
+                void* resourceEntry = ResourcePool_FindResource(reinterpret_cast<void*>(resourcePool), false, 2, nullptr, resourceId);
+                if (resourceEntry != nullptr)
+                {
+                    return reinterpret_cast<Resource*>(reinterpret_cast<uintptr_t>(resourceEntry) + 0x28);
+                }
             }
         }
 
