@@ -6,7 +6,8 @@
 
 namespace BPR
 {
-    bool GameEventQueue_AddGameEvent(void* gameEventQueue, const void* gameEvent, int32_t gameEventID, uint32_t gameEventSize)
+    // bool __thiscall CgsModule::VariableEventQueue<5120, 16>::AddEvent(const Event* lpEvent, int32_t liEventId, int32_t liEventSize)
+    inline bool GameEventQueue_AddGameEvent(void* gameEventQueue, const void* gameEvent, int32_t gameEventID, uint32_t gameEventSize)
     {
         bool result = false;
         
@@ -27,8 +28,10 @@ namespace BPR
     }
 
 
+    // BrnGameState::GameStateModuleIO::SetupPlayerCarEvent
     struct GameEvent_SetupPlayerVehicle
     {
+        // BrnGameState::GameStateModuleIO::EGameEventType::E_EVENT_SETUP_PLAYER_CAR
         static constexpr int32_t GetID()
         {
             return 0;
@@ -40,8 +43,10 @@ namespace BPR
         uint64_t WheelID;
     };
 
+    // BrnGameState::GameStateModuleIO::TeleportPlayerCarEvent
     struct GameEvent_TeleportPlayerVehicle
     {
+        // BrnGameState::GameStateModuleIO::EGameEventType::E_EVENT_TELEPORT_PLAYER_CAR
         static constexpr int32_t GetID()
         {
             return 1;
@@ -51,8 +56,10 @@ namespace BPR
         alignas(16) float Direction[3];
     };
 
+    // BrnGameState::GameStateModuleIO::ChangePlayerCarEvent
     struct GameEvent_ChangePlayerVehicle
     {
+        // BrnGameState::GameStateModuleIO::EGameEventType::E_EVENT_CHANGE_PLAYER_CAR
         static constexpr int32_t GetID()
         {
             return 2;
@@ -64,8 +71,10 @@ namespace BPR
         bool KeepResetSection;
     };
 
+    // BrnGameState::GameStateModuleIO::ChangeNetworkCarEvent
     struct GameEvent_ChangeNetworkVehicle
     {
+        // BrnGameState::GameStateModuleIO::EGameEventType::E_EVENT_CHANGE_NETWORK_CAR
         static constexpr int32_t GetID()
         {
             return 7;
