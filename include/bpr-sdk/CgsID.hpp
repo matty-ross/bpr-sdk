@@ -6,7 +6,7 @@
 
 namespace BPR
 {
-    // CgsID CgsIDCompress(const char* lcpString)
+    // CgsID CgsIDCompress(const char*)
     inline uint64_t CgsID_Compress(const char* string)
     {
         uint64_t id = 0;
@@ -25,7 +25,7 @@ namespace BPR
         return id;
     }
 
-    // void CgsIDUnCompress(CgsID lID, char* lcpString)
+    // void CgsIDUnCompress(CgsID, char*)
     inline void CgsID_Uncompress(uint64_t id, char* string)
     {
         __asm
@@ -40,7 +40,7 @@ namespace BPR
         }
     }
 
-    // void CgsIDConvertToString(CgsID lID, char* lpcString)
+    // void CgsIDConvertToString(CgsID, char*)
     inline void CgsID_ConvertToString(uint64_t id, char* string)
     {
         __asm

@@ -6,8 +6,8 @@
 
 namespace BPR
 {
-    // bool __thiscall CgsModule::VariableEventQueue<13312, 16>::AddEvent(const Event* lpEvent, int32_t liEventId, int32_t liEventSize)
-    inline bool GameActionQueue_AddGameAction(void* gameActionQueue, const void* gameAction, int32_t gameActionID, uint32_t gameActionSize)
+    // bool __thiscall CgsModule::VariableEventQueue<13312, 16>::AddEvent(const CgsModule::Event*, int32_t, int32_t)
+    inline bool GameActionQueue_AddGameAction(void* gameActionQueue, const void* gameAction, int32_t gameActionID, int32_t gameActionSize)
     {
         bool result = false;
         
@@ -32,10 +32,7 @@ namespace BPR
     struct GameAction_ResetPlayerVehicle
     {
         // BrnGameState::GameStateModuleIO::EGameActionType::E_ACTION_RESET_PLAYER_CAR
-        static constexpr int32_t GetID()
-        {
-            return 0;
-        }
+        static constexpr int32_t ID = 0;
         
         // BrnPhysics::Deformation::DeformationResetType
         enum class DeformationType
@@ -61,8 +58,8 @@ namespace BPR
             Plane = 2,
         };
 
-        alignas(16) float Position[3];
-        alignas(16) float Direction[3];
+        float Position[4];
+        float Direction[4];
         uint64_t VehicleID;
         uint64_t WheelID;
         int32_t PlayerScoringIndex;
@@ -80,10 +77,7 @@ namespace BPR
     struct GameAction_ResetPlayerVehicleOnTrack
     {
         // BrnGameState::GameStateModuleIO::EGameActionType::E_ACTION_RESET_PLAYER_CAR_ON_TRACK
-        static constexpr int32_t GetID()
-        {
-            return 3;
-        }
+        static constexpr int32_t ID = 3;
         
         float Speed;
     };
@@ -92,13 +86,10 @@ namespace BPR
     struct GameAction_SetupNetworkVehicle
     {
         // BrnGameState::GameStateModuleIO::EGameActionType::E_ACTION_SETUP_NETWORK_CAR
-        static constexpr int32_t GetID()
-        {
-            return 5;
-        }
+        static constexpr int32_t ID = 5;
         
-        alignas(16) float Position[3];
-        alignas(16) float At[3];
+        float Position[4];
+        float At[4];
         uint64_t VehicleID;
         uint64_t WheelID;
         int32_t ActiveRaceVehicleIndex;
@@ -110,10 +101,7 @@ namespace BPR
     struct GameAction_SetPlayerVehicleDriver
     {
         // BrnGameState::GameStateModuleIO::EGameActionType::E_ACTION_SET_PLAYER_CAR_DRIVER
-        static constexpr int32_t GetID()
-        {
-            return 7;
-        }
+        static constexpr int32_t ID = 7;
         
         // BrnWorld::CarControl
         enum class PlayerVehicleDriver
@@ -138,30 +126,21 @@ namespace BPR
     struct GameAction_PauseSimulation
     {
         // BrnGameState::GameStateModuleIO::EGameActionType::E_ACTION_PAUSE_SIMULATION
-        static constexpr int32_t GetID()
-        {
-            return 100;
-        }
+        static constexpr int32_t ID = 100;
     };
 
     // BrnGameState::GameStateModuleIO::UnpauseSimulationAction
     struct GameAction_UnpauseSimulation
     {
         // BrnGameState::GameStateModuleIO::EGameActionType::E_ACTION_UNPAUSE_SIMULATION
-        static constexpr int32_t GetID()
-        {
-            return 101;
-        }
+        static constexpr int32_t ID = 101;
     };
 
     // BrnGameState::GameStateModuleIO::SetBoostAction
     struct GameAction_SetBoost
     {
         // BrnGameState::GameStateModuleIO::EGameActionType::E_ACTION_SET_BOOST
-        static constexpr int32_t GetID()
-        {
-            return 197;
-        }
+        static constexpr int32_t ID = 197;
         
         int32_t ActiveRaceVehicleIndex;
         struct
@@ -184,10 +163,7 @@ namespace BPR
     struct GameAction_UpdateVehicleStats
     {
         // BrnGameState::GameStateModuleIO::EGameActionType::E_ACTION_UPDATE_CAR_STATS
-        static constexpr int32_t GetID()
-        {
-            return 230;
-        }
+        static constexpr int32_t ID = 230;
         
         enum class BoostType
         {

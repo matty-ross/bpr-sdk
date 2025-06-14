@@ -13,7 +13,7 @@ namespace BPR
     };
     
     
-    // uint64_t CgsResource::ID::HashString(const RwChar* lpcString)
+    // uint64_t CgsResource::ID::HashString(const RwChar*)
     inline uint64_t ResourceID_GetHash(const char* resourceName)
     {
         uint64_t id = 0;
@@ -32,7 +32,7 @@ namespace BPR
         return id;
     }
     
-    // Entry* __thiscall CgsResource::Pool::FindResource(bool lbAllowNoRef, uint8_t lxStatus, int32_t* lpiOutIndex, ID lId)
+    // CgsResource::Entry* __thiscall CgsResource::Pool::FindResource(bool, uint8_t, int32_t*, CgsResource::ID)
     inline void* ResourcePool_FindResource(void* resourcePool, bool allowNoRef, uint8_t status, int32_t* index, uint64_t id)
     {
         void* resource = nullptr;
