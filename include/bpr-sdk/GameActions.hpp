@@ -28,35 +28,53 @@ namespace BPR
     }
 
 
+    enum class VehicleType
+    {
+        Invalid = -1,
+        Car = 0,
+        Motorbike = 1,
+        Plane = 2,
+    };
+
+    enum class BoostType
+    {
+        Speed = 0,
+        Aggression = 1,
+        Stunt = 2,
+        None = 3,
+        Locked = 4,
+    };
+
+    // BrnWorld::CarControl
+    enum class PlayerVehicleDriver
+    {
+        None = 0,
+        Player = 1,
+        AI = 2,
+    };
+
+    // BrnPhysics::Deformation::DeformationResetType
+    enum class DeformationType
+    {
+        None = -1,
+        Event = 0,
+        VehicleSelect = 1,
+    };
+
+    // BrnGameState::GameStateModuleIO::ResetPlayerCarAction::CarSelectType
+    enum class VehicleSelectType
+    {
+        DontDrop = 0,
+        DropNormal = 1,
+        DropShutdown = 2,
+    };
+
+
     // BrnGameState::GameStateModuleIO::ResetPlayerCarAction
     struct GameAction_ResetPlayerVehicle
     {
         // BrnGameState::GameStateModuleIO::EGameActionType::E_ACTION_RESET_PLAYER_CAR
         static constexpr int32_t ID = 0;
-        
-        // BrnPhysics::Deformation::DeformationResetType
-        enum class DeformationType
-        {
-            None = -1,
-            Event = 0,
-            VehicleSelect = 1,
-        };
-
-        // BrnGameState::GameStateModuleIO::ResetPlayerCarAction::CarSelectType
-        enum class VehicleSelectType
-        {
-            DontDrop = 0,
-            DropNormal = 1,
-            DropShutdown = 2,
-        };
-
-        enum class VehicleType
-        {
-            Invalid = -1,
-            Car = 0,
-            Motorbike = 1,
-            Plane = 2,
-        };
 
         float Position[4];
         float Direction[4];
@@ -102,14 +120,6 @@ namespace BPR
     {
         // BrnGameState::GameStateModuleIO::EGameActionType::E_ACTION_SET_PLAYER_CAR_DRIVER
         static constexpr int32_t ID = 7;
-        
-        // BrnWorld::CarControl
-        enum class PlayerVehicleDriver
-        {
-            None = 0,
-            Player = 1,
-            AI = 2,
-        };
 
         PlayerVehicleDriver PlayerVehicleDriver;
         struct
@@ -164,15 +174,6 @@ namespace BPR
     {
         // BrnGameState::GameStateModuleIO::EGameActionType::E_ACTION_UPDATE_CAR_STATS
         static constexpr int32_t ID = 230;
-        
-        enum class BoostType
-        {
-            Speed = 0,
-            Aggression = 1,
-            Stunt = 2,
-            None = 3,
-            Locked = 4,
-        };
         
         int32_t Speed;
         int32_t Strength;
