@@ -89,6 +89,8 @@ namespace BPR
         bool VehicleSelectDontStreamAudio;
         bool ResetPlayerCamera;
         bool KeepResetSection;
+        bool Unknown1;
+        int32_t Uknown2;
     };
 
     // BrnGameState::GameStateModuleIO::ResetPlayerCarOnTrackAction
