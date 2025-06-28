@@ -90,7 +90,7 @@ namespace BPR
         bool ResetPlayerCamera;
         bool KeepResetSection;
         bool Unknown1;
-        int32_t Uknown2;
+        int32_t Unknown2;
     };
 
     // BrnGameState::GameStateModuleIO::ResetPlayerCarOnTrackAction
