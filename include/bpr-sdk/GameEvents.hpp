@@ -34,8 +34,8 @@ namespace BPR
         // BrnGameState::GameStateModuleIO::EGameEventType::E_EVENT_SETUP_PLAYER_CAR
         static constexpr int32_t ID = 0;
 
-        float Position[4];
-        float Direction[4];
+        alignas(16) float Position[4];
+        alignas(16) float Direction[4];
         uint64_t VehicleID;
         uint64_t WheelID;
     };
@@ -46,8 +46,8 @@ namespace BPR
         // BrnGameState::GameStateModuleIO::EGameEventType::E_EVENT_TELEPORT_PLAYER_CAR
         static constexpr int32_t ID = 1;
 
-        float Position[4];
-        float Direction[4];
+        alignas(16) float Position[4];
+        alignas(16) float Direction[4];
     };
 
     // BrnGameState::GameStateModuleIO::ChangePlayerCarEvent

@@ -76,8 +76,8 @@ namespace BPR
         // BrnGameState::GameStateModuleIO::EGameActionType::E_ACTION_RESET_PLAYER_CAR
         static constexpr int32_t ID = 0;
 
-        float Position[4];
-        float Direction[4];
+        alignas(16) float Position[4];
+        alignas(16) float Direction[4];
         uint64_t VehicleID;
         uint64_t WheelID;
         int32_t PlayerScoringIndex;
@@ -106,8 +106,8 @@ namespace BPR
         // BrnGameState::GameStateModuleIO::EGameActionType::E_ACTION_SETUP_NETWORK_CAR
         static constexpr int32_t ID = 5;
         
-        float Position[4];
-        float At[4];
+        alignas(16) float Position[4];
+        alignas(16) float At[4];
         uint64_t VehicleID;
         uint64_t WheelID;
         int32_t ActiveRaceVehicleIndex;
