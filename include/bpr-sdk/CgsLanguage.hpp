@@ -60,4 +60,24 @@ namespace BPR
 
         return result;
     }
+
+    // const CgsUnicode::CgsUtf8* __thiscall CgsLanguage::LanguageManager::FindString(const char*)
+    inline const char* LanguageManager_FindString(const char* stringID)
+    {
+        const char* string = nullptr;
+
+        __asm
+        {
+            push dword ptr [stringID]
+            mov ecx, dword ptr ds:[0x013FC8E0]
+            add ecx, 0x7A0E34
+            
+            mov eax, 0x0089C6D0
+            call eax
+
+            mov dword ptr [string], eax
+        }
+
+        return string;
+    }
 }
